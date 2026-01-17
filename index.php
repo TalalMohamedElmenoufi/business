@@ -1,0 +1,131 @@
+<?php
+include("./includes/connect.php");
+include("./includes/funcoes.php");
+?>
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Sistema de SMS Corporativo.">
+	<meta name="author" content="Talal Mohamed Elmenoufi">
+	<title>T M Elmenoufi</title>
+
+
+	<link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+	<link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+	<link rel="stylesheet" href="assets/css/style.css">
+	<link rel="stylesheet" href="assets/css/estilo.css">    
+	<link rel="shortcut icon" href="assets/images/icon.ico" />
+
+	<link rel="stylesheet" href="/_libes_tme/w3c/w3pro.css"> 
+	<link rel="stylesheet" href="/_libes_tme/w3c/w3-theme-black.css">   
+ 
+	<link rel="stylesheet" href="/_libes_tme/fonts/css/all.css"/>  
+	  
+	<!--<script src="assets/vendors/js/vendor.bundle.base.js"></script> --> 
+ 
+ 
+	<script type="text/javascript" src="/_libes_tme/jquery.1.12.0.js" charset="utf-8"></script>	 
+	  
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>  	  
+	<script type="text/javascript" src="/_libes_tme/bootstrap/4/bootstrap_4_5_0.js" charset="utf-8"></script>	  
+
+	  
+	  
+	  
+	<script type="text/javascript" src="/_libes_tme/validate/jquery.validate.js"></script> 	
+	<script type="text/javascript" src="/_libes_tme/mask/mask-v2.js" charset="utf-8"></script>
+
+	<link rel="stylesheet" type="text/css" href="/_libes_tme/confirm_v2/jquery-confirm.css" />
+	<script type="text/javascript" src="/_libes_tme/confirm_v2/jquery-confirm.js"></script>		
+
+		  
+   
+	  
+	<link rel="stylesheet" type="text/css" href="/_libes_tme/dc.js-develop/dc.css"/>
+	<script type="text/javascript" src="/_libes_tme/dc.js-develop/crossfilter.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/_libes_tme/dc.js-develop/d3.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/_libes_tme/dc.js-develop/dc.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/_libes_tme/dc.js-develop/fetch.umd.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/_libes_tme/dc.js-develop/promise-polyfill.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/_libes_tme/dc.js-develop/axis.js" charset="utf-8"></script>
+	<script src="/_libes_tme/dc.js-develop/d3.v4.js"></script>
+	
+
+ 	  
+	  
+	
+	<link rel="stylesheet" href="/_libes_tme/multiselect/multiselect.css" type="text/css">	
+	<script type="text/javascript" src="/_libes_tme/multiselect/multiselect.js"></script>	
+
+
+	<link rel="stylesheet" type="text/css" href="/_libes_tme/datetimepicker/bootstrap-datetimepicker.css"/>					
+	<script type="text/javascript" src="/_libes_tme/datetimepicker/moment-with-locales.js" charset="utf-8"></script>
+	<script type="text/javascript" src="/_libes_tme/datetimepicker/bootstrap-datetimepicker.js" charset="utf-8"></script>	  
+	  
+	  
+	<link rel="stylesheet" href="/_libes_tme/datepicker/datepicker.css">  
+	<script type="text/javascript" src="/_libes_tme/datepicker/datepicker.js" charset="utf-8"></script>		  
+	  
+	  
+	<link rel="stylesheet" href="/_libes_tme/fileupload/bootstrap-fileupload.min.css" />	
+	<script src="/_libes_tme/fileupload/bootstrap-fileupload.js"></script>  
+
+	  
+	<link rel='stylesheet' href='/_libes_tme/spectrum/spectrum.css' />   
+	<script src='/_libes_tme/spectrum/spectrum.js'></script>
+
+	<link rel='stylesheet' href='/_libes_tme/agenda/responsive-calendar.css' />   
+	<script src='/_libes_tme/agenda/responsive-calendar.js'></script>
+		  
+	 
+	<script type="text/javascript" src="/_libes_tme/bootstrap_select/1.13.6/bootstrap_select.min.js"></script>
+    <link href="/_libes_tme/bootstrap_select/1.13.6/bootstrap_select.css" rel="stylesheet" type="text/css">	
+	
+	<script src="/_libes_tme/ckeditor/ckeditor.js" type="text/javascript" charset="iso-8859-1"></script>  
+	  
+<!--  <link rel="stylesheet" type="text/css" href="/_libes_tme/emojis/jquery.emojipicker.css">
+  <script type="text/javascript" src="/_libes_tme/emojis/jquery.emojipicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="/_libes_tme/emojis/jquery.emojipicker.tw.css">
+  <script type="text/javascript" src="/_libes_tme/emojis/jquery.emojis.js"></script>-->
+
+	
+
+   <link rel="stylesheet" href="/_libes_tme/chat/style.css">
+
+	
+  </head>
+  <body>
+
+	<?php
+	$diretorio = dirname(__FILE__)."/navegacao";
+	if (is_dir($diretorio)){
+	  if ($dh = opendir($diretorio)){
+		while (($file = readdir($dh)) !== false){
+		  if( $file!='.' and $file!='..' ){
+			  $files[] = $file; 
+		  }
+		}
+	  }
+	}
+	$getU = $_GET[u].".php";
+	if($_GET) {	
+	include("navegacao/".((in_array($getU,$files))?$getU:'erro.php'));	
+	}else{
+	include("navegacao/login.php");
+	}
+	?>
+
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/hoverable-collapse.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/todolist.js"></script>
+
+   
+  <iframe frameborder="0" id="pagina" name="pagina" src="./paginas/branco.php" width="0" height="0"></iframe>
+  </body>
+</html>
